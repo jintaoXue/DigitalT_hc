@@ -168,5 +168,5 @@ if __name__ == "__main__":
     print("  GET  /data     - 获取数据")
     print("  POST /clear    - 清空数据")
     
-    app.run(host='0.0.0.0', port=5002, debug=True)
+    app.run(host='0.0.0.0', port=1004, debug=True)
     

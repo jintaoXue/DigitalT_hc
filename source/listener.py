@@ -154,11 +154,11 @@ def clear_messages():
 
 if __name__ == '__main__':
     # 启动Flask服务器，监听Ubuntu电脑B的IP
-    print(f"启动服务器，监听端口 1004")
+    print(f"启动服务器，监听端口 1005")
     print(f"可用端点:")
     print(f"  GET  /data           - 读取本地JSON文件数据")
     print(f"  POST /receive        - 接收外部数据并保存到message.json")
     print(f"  GET  /messages       - 获取message.json数据")
     print(f"  POST /clear_messages - 清空消息文件")
     
-    app.run(host='0.0.0.0', port=1004, debug=True)
+    app.run(host='0.0.0.0', port=1005, debug=True)
