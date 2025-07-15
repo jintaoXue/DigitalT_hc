@@ -25,4 +25,4 @@ def receive_data():
 
 if __name__ == '__main__':
     # 启动Flask服务器，监听Ubuntu电脑B的IP
-    app.run(host='0.0.0.0', port=5001)
+    app.run(host='0.0.0.0', port=1004)

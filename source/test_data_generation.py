@@ -46,7 +46,7 @@ def test_synthetic_data_api():
 
 def test_listener_api():
     """测试listener.py的API功能"""
-    base_url = "http://localhost:5001"
+    base_url = "http://localhost:1004"
     
     print("\n=== 测试Listener API ===")
     
@@ -112,7 +112,7 @@ def test_listener_api():
 
 def test_message_persistence():
     """测试消息持久化功能"""
-    base_url = "http://localhost:5001"
+    base_url = "http://localhost:1004"
     
     print("\n=== 测试消息持久化 ===")
     
@@ -151,7 +151,7 @@ def test_message_persistence():
 
 def test_message_management():
     """测试消息管理功能"""
-    base_url = "http://localhost:5001"
+    base_url = "http://localhost:1004"
     
     print("\n=== 测试消息管理 ===")
     

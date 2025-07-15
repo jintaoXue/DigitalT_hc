@@ -24,7 +24,7 @@ python synthetic_data.py
 ```
 
 ### 2. `listener.py` - 数据监听服务
-**端口**: 5001
+**端口**: 1004
 
 **功能**:
 - 读取本地JSON文件数据
@@ -43,7 +43,7 @@ python listener.py
 ```
 
 ### 3. `sender.py` - 数据发送服务
-**端口**: 5001
+**端口**: 1004
 
 **功能**:
 - 提供数据端点
@@ -129,7 +129,7 @@ python listener.py
 ### 4. 获取数据
 ```bash
 # 从listener获取数据
-curl http://localhost:5001/data
+curl http://localhost:1004/data
 
 # 从synthetic_data获取数据
 curl http://localhost:5002/data
@@ -138,12 +138,12 @@ curl http://localhost:5002/data
 ### 5. 发送数据到listener（自动保存到message.json）
 ```bash
 # 发送简单消息
-curl -X POST http://localhost:5001/receive \
+curl -X POST http://localhost:1004/receive \
   -H "Content-Type: application/json" \
   -d '{"message": "测试数据", "timestamp": 1234567890}'
 
 # 发送复杂消息
-curl -X POST http://localhost:5001/receive \
+curl -X POST http://localhost:1004/receive \
   -H "Content-Type: application/json" \
   -d '{
     "type": "error",
@@ -156,10 +156,10 @@ curl -X POST http://localhost:5001/receive \
 ### 6. 查看消息文件数据
 ```bash
 # 获取所有消息
-curl http://localhost:5001/messages
+curl http://localhost:1004/messages
 
 # 清空消息文件
-curl -X POST http://localhost:5001/clear_messages
+curl -X POST http://localhost:1004/clear_messages
 ```
 
 ## 消息存储机制
@@ -208,7 +208,7 @@ python test_data_generation.py
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
 │  synthetic_data │    │    listener     │    │     sender      │
-│   (端口:5002)   │    │   (端口:5001)   │    │   (端口:5001)   │
+│   (端口:5002)   │    │   (端口:1004)   │    │   (端口:1004)   │
 └─────────────────┘    └─────────────────┘    └─────────────────┘
          │                       │                       │
          │                       │                       │
