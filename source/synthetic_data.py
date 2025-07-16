@@ -28,30 +28,35 @@ def generate_user_data(num=10):
 def generate_sensor_data(num=10):
     """生成传感器数据"""
     data = []
-    for i in range(num):
-        item = {
-            "id": i,
-            "sensor_type": random.choice(["temperature", "humidity", "pressure", "light"]),
-            "value": round(random.uniform(0, 100), 2),
-            "unit": random.choice(["°C", "%", "hPa", "lux"]),
-            "timestamp": time.time()
-        }
-        data.append(item)
-    return data
+    # for i in range(num):
+    #     item = {
+    #         "id": i,
+    #         "sensor_type": random.choice(["temperature", "humidity", "pressure", "light"]),
+    #         "value": round(random.uniform(0, 100), 2),
+    #         "unit": random.choice(["°C", "%", "hPa", "lux"]),
+    #         "timestamp": time.time()
+    #     }
+    #     data.append(item)
+    item_0 = {
+        "id": 0,
+        "name": "焊接机器人设备",
+        "sensor_type": random.choice(["Current and Voltage"]),
+        "value": round(random.uniform(0, 100, 2), 2),
+        "state_type": "working animation",
+        "timestamp": time.time(),
 
-def generate_transaction_data(num=10):
-    """生成交易数据"""
-    data = []
-    for i in range(num):
-        item = {
-            "id": i,
-            "amount": round(random.uniform(10, 1000), 2),
-            "currency": random.choice(["USD", "EUR", "CNY", "JPY"]),
-            "type": random.choice(["purchase", "refund", "transfer"]),
-            "status": random.choice(["completed", "pending", "failed"]),
-            "timestamp": time.time()
-        }
-        data.append(item)
+    }
+    item_1 = {
+        "id": 1,
+        "name": "旋转管道自动焊机",
+        "sensor_type": random.choice(["Current and Voltage"]),
+        "value": round(random.uniform(0, 100, 2), 2),
+        "state_type": "finished work and reseting animation",
+        "timestamp": time.time(),
+
+    }
+    data.append(item_0)
+    data.append(item_1)
     return data
 
 def generate_data(data_type="user", num=10):
@@ -60,8 +65,6 @@ def generate_data(data_type="user", num=10):
         return generate_user_data(num)
     elif data_type == "sensor":
         return generate_sensor_data(num)
-    elif data_type == "transaction":
-        return generate_transaction_data(num)
     else:
         return generate_user_data(num)
 
