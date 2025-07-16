@@ -40,12 +40,13 @@ def generate_sensor_data(num=10):
     #         "timestamp": time.time()
     #     }
     #     data.append(item)
+    state_set = ["working animation", "finished work and reseting animation", "idle", "warning"]
     item_0 = {
         "id": 0,
         "name": "Welding robot equipment",
         "sensor_type": random.choice(["Current and Voltage"]),
         "value": [round(random.uniform(0, 100), 2) for _ in range(2)],
-        "state_type": "working animation",
+        "state_type": random.choice(state_set),
         "timestamp": time.time(),
 
     }
@@ -54,7 +55,7 @@ def generate_sensor_data(num=10):
         "name": "Rotary pipe automatic welding machine",
         "sensor_type": random.choice(["Current and Voltage"]),
         "value": [round(random.uniform(0, 100), 2) for _ in range(2)],
-        "state_type": "finished work and reseting animation",
+        "state_type": random.choice(state_set),
         "timestamp": time.time(),
 
     }
@@ -62,14 +63,14 @@ def generate_sensor_data(num=10):
     data.append(item_1)
     return data
 
-def generate_data(data_type="user", num=10):
+def generate_data(data_type="sensor", num=5):
     """根据类型生成数据"""
     if data_type == "user":
         return generate_user_data(num)
     elif data_type == "sensor":
         return generate_sensor_data(num)
     else:
-        return generate_user_data(num)
+        return generate_sensor_data(num)
 
 def save_data_to_file(data, filename=None):
     """保存数据到JSON文件"""
@@ -108,8 +109,8 @@ def generate_data_endpoint():
     """生成数据的API端点"""
     try:
         data = request.get_json() or {}
-        data_type = data.get('type', 'user')
-        num = data.get('num', 10)
+        data_type = data.get('type', 'sensor')
+        num = data.get('num', 5)
         
         generated_data = generate_data(data_type, num)
         
