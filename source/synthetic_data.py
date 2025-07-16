@@ -39,7 +39,7 @@ def generate_sensor_data(num=10):
     #     data.append(item)
     item_0 = {
         "id": 0,
-        "name": "焊接机器人设备",
+        "name": "Welding robot equipment",
         "sensor_type": random.choice(["Current and Voltage"]),
         "value": [round(random.uniform(0, 100), 2) for _ in range(2)],
         "state_type": "working animation",
@@ -48,7 +48,7 @@ def generate_sensor_data(num=10):
     }
     item_1 = {
         "id": 1,
-        "name": "旋转管道自动焊机",
+        "name": "Rotary pipe automatic welding machine",
         "sensor_type": random.choice(["Current and Voltage"]),
         "value": [round(random.uniform(0, 100), 2) for _ in range(2)],
         "state_type": "finished work and reseting animation",
