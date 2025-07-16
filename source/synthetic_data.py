@@ -158,7 +158,7 @@ def clear_data_endpoint():
 if __name__ == "__main__":
     # 如果作为独立脚本运行，生成默认数据
     print("生成默认用户数据...")
-    data = generate_user_data(20)
+    data = generate_sensor_data(20)
     save_data_to_file(data)
     
     # 启动Flask服务器（可选）

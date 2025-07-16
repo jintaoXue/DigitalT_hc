@@ -89,18 +89,6 @@ python sender.py
 }
 ```
 
-### 3. 交易数据 (transaction)
-```json
-{
-  "id": 0,
-  "amount": 150.75,
-  "currency": "USD",
-  "type": "purchase",
-  "status": "completed",
-  "timestamp": 1234567890.123
-}
-```
-
 ## 使用示例
 
 ### 1. 启动数据生成服务
