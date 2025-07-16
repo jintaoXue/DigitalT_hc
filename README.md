@@ -20,8 +20,22 @@
 
 **使用方法**:
 ```bash
+# 使用默认端口 1004
 python synthetic_data.py
+
+# 指定端口号
+python synthetic_data.py --port 8080
+
+# 指定主机和端口
+python synthetic_data.py --host 127.0.0.1 --port 5000
+
+# 查看帮助信息
+python synthetic_data.py --help
 ```
+
+**命令行参数**:
+- `--port`: 设置服务器端口号 (默认: 1004)
+- `--host`: 设置服务器主机地址 (默认: 0.0.0.0)
 
 ### 2. `listener.py` - 数据监听服务
 **端口**: 1005
@@ -42,17 +56,16 @@ python synthetic_data.py
 python listener.py
 ```
 
-### 3. `sender.py` - 数据发送服务
+### 3. `sender.py` - 数据发送服务 (已废弃)
 **端口**: 1005
 
-**功能**:
+**状态**: 此服务已废弃，不再维护和使用
+
+**原功能**:
 - 提供数据端点
 - 接收外部数据
 
-**使用方法**:
-```bash
-python sender.py
-```
+**注意**: 请使用 `listener.py` 作为主要的数据接收服务
 
 ## 数据文件
 
@@ -93,7 +106,11 @@ python sender.py
 
 ### 1. 启动数据生成服务
 ```bash
+# 使用默认端口
 python synthetic_data.py
+
+# 或指定端口
+python synthetic_data.py --port 8080
 ```
 
 ### 2. 生成数据
@@ -107,6 +124,12 @@ curl -X POST http://localhost:1004/generate \
 curl -X POST http://localhost:1004/generate \
   -H "Content-Type: application/json" \
   -d '{"type": "sensor", "num": 5}'
+
+# 如果使用了自定义端口，请相应修改URL
+# 例如端口为8080时：
+# curl -X POST http://localhost:8080/generate \
+#   -H "Content-Type: application/json" \
+#   -d '{"type": "sensor", "num": 5}'
 ```
 
 ### 3. 启动监听服务
@@ -121,6 +144,10 @@ curl http://localhost:1005/data
 
 # 从synthetic_data获取数据
 curl http://localhost:1004/data
+
+# 如果使用了自定义端口，请相应修改URL
+# 例如端口为8080时：
+# curl http://localhost:8080/data
 ```
 
 ### 5. 发送数据到listener（自动保存到message.json）
@@ -194,18 +221,20 @@ python test_data_generation.py
 ## 系统架构
 
 ```
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│  synthetic_data │    │    listener     │    │     sender      │
-│   (端口:1004)   │    │   (端口:1005)   │    │   (端口:1005)   │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
-         │                       │                       │
-         │                       │                       │
-         ▼                       ▼                       ▼
-    data.json              data.json              数据端点
+┌─────────────────┐    ┌─────────────────┐
+│  synthetic_data │    │    listener     │
+│   (端口:1004)   │    │   (端口:1005)   │
+└─────────────────┘    └─────────────────┘
+         │                       │
+         │                       │
+         ▼                       ▼
+    data.json              data.json
                                     │
                                     ▼
                               message.json
 ```
+
+**注意**: `sender.py` 服务已废弃，不再包含在系统架构中
 
 ## 注意事项
 

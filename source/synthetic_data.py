@@ -1,6 +1,7 @@
 import json
 import random
 import time
+import argparse
 from flask import Flask, jsonify, request
 import os
 
@@ -159,6 +160,12 @@ def clear_data_endpoint():
         }), 500
 
 if __name__ == "__main__":
+    # 解析命令行参数
+    parser = argparse.ArgumentParser(description='数据生成API服务器')
+    parser.add_argument('--port', type=int, default=1004, help='服务器端口号 (默认: 1004)')
+    parser.add_argument('--host', type=str, default='0.0.0.0', help='服务器主机地址 (默认: 0.0.0.0)')
+    args = parser.parse_args()
+    
     # 如果作为独立脚本运行，生成默认数据
     print("生成默认用户数据...")
     data = generate_sensor_data(20)
@@ -166,10 +173,11 @@ if __name__ == "__main__":
     
     # 启动Flask服务器（可选）
     print("启动数据生成API服务器...")
+    print(f"服务器地址: http://{args.host}:{args.port}")
     print("可用端点:")
     print("  POST /generate - 生成新数据")
     print("  GET  /data     - 获取数据")
     print("  POST /clear    - 清空数据")
     
-    app.run(host='0.0.0.0', port=1004, debug=True)
+    app.run(host=args.host, port=args.port, debug=True)
     

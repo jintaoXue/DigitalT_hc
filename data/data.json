@@ -1,24 +1,24 @@
 [
   {
     "id": 0,
-    "name": "焊接机器人设备",
+    "name": "Welding robot equipment",
     "sensor_type": "Current and Voltage",
     "value": [
-      58.56,
-      88.55
+      43.16,
+      59.31
     ],
     "state_type": "working animation",
-    "timestamp": 1752637283.4670336
+    "timestamp": 1752637400.123948
   },
   {
     "id": 1,
-    "name": "旋转管道自动焊机",
+    "name": "Rotary pipe automatic welding machine",
     "sensor_type": "Current and Voltage",
     "value": [
-      59.81,
-      98.72
+      2.37,
+      46.61
     ],
     "state_type": "finished work and reseting animation",
-    "timestamp": 1752637283.467036
+    "timestamp": 1752637400.1239567
   }
 ]
