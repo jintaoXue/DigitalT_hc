@@ -236,12 +236,51 @@ python test_data_generation.py
 
 **注意**: `sender.py` 服务已废弃，不再包含在系统架构中
 
+## CORS 支持
+
+系统已启用跨域资源共享 (CORS) 支持，允许来自不同域的前端应用访问API：
+
+### 响应头
+- `Access-Control-Allow-Origin: *` - 允许所有域访问
+- `Access-Control-Allow-Methods: GET, POST, OPTIONS` - 允许的HTTP方法
+- `Access-Control-Allow-Headers: Content-Type` - 允许的请求头
+
+### 测试CORS
+```bash
+# 运行CORS测试
+python test_cors.py
+```
+
+### 前端JavaScript示例
+```javascript
+// 从不同域访问API
+fetch('http://localhost:1004/data')
+  .then(response => response.json())
+  .then(data => console.log(data));
+
+// 发送数据到listener
+fetch('http://localhost:1005/receive', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    message: 'Hello from frontend',
+    timestamp: Date.now()
+  })
+})
+.then(response => response.json())
+.then(data => console.log(data));
+```
+
 ## 注意事项
 
 1. 确保Flask已安装: `pip install flask`
-2. 确保requests已安装: `pip install requests`
-3. 不同服务使用不同端口，避免冲突
-4. 数据文件 `data.json` 和 `message.json` 会在运行时自动创建
-5. `message.json` 文件会持续增长，定期清理或归档
-6. 消息存储是追加模式，不会覆盖现有数据
-7. 系统不再使用内存队列，所有数据直接存储到文件 
+2. 确保Flask-CORS已安装: `pip install flask-cors`
+3. 确保requests已安装: `pip install requests`
+4. 不同服务使用不同端口，避免冲突
+5. 数据文件 `data.json` 和 `message.json` 会在运行时自动创建
+6. `message.json` 文件会持续增长，定期清理或归档
+7. 消息存储是追加模式，不会覆盖现有数据
+8. 系统不再使用内存队列，所有数据直接存储到文件
+9. CORS配置允许所有域访问，生产环境建议限制特定域 

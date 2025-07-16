@@ -1,9 +1,11 @@
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 import time
 import json
 import os
 
 app = Flask(__name__)
+CORS(app)  # 启用CORS支持
 
 # JSON文件路径 - 使用os.path确保跨平台兼容
 current_dir = os.path.dirname(os.path.abspath(__file__))

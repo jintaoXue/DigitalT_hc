@@ -1,7 +1,9 @@
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 import time
 
 app = Flask(__name__)
+CORS(app)  # 启用CORS支持
 
 # 存储待发送的数据
 data_queue = []

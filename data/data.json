@@ -4,21 +4,21 @@
     "name": "Welding robot equipment",
     "sensor_type": "Current and Voltage",
     "value": [
-      43.16,
-      59.31
+      84.2,
+      54.13
     ],
     "state_type": "working animation",
-    "timestamp": 1752637400.123948
+    "timestamp": 1752642736.427736
   },
   {
     "id": 1,
     "name": "Rotary pipe automatic welding machine",
     "sensor_type": "Current and Voltage",
     "value": [
-      2.37,
-      46.61
+      5.19,
+      85.03
     ],
     "state_type": "finished work and reseting animation",
-    "timestamp": 1752637400.1239567
+    "timestamp": 1752642736.4277384
   }
 ]
