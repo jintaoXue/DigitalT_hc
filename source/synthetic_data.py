@@ -41,7 +41,7 @@ def generate_sensor_data(num=10):
         "id": 0,
         "name": "焊接机器人设备",
         "sensor_type": random.choice(["Current and Voltage"]),
-        "value": round([round(random.uniform(0, 100), 2) for _ in range(2)]),
+        "value": [round(random.uniform(0, 100), 2) for _ in range(2)],
         "state_type": "working animation",
         "timestamp": time.time(),
 
@@ -50,7 +50,7 @@ def generate_sensor_data(num=10):
         "id": 1,
         "name": "旋转管道自动焊机",
         "sensor_type": random.choice(["Current and Voltage"]),
-        "value": round([round(random.uniform(0, 100), 2) for _ in range(2)]),
+        "value": [round(random.uniform(0, 100), 2) for _ in range(2)],
         "state_type": "finished work and reseting animation",
         "timestamp": time.time(),
 
